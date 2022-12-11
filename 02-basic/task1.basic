@@ -1,0 +1,48 @@
+open 1, "input.txt", "r"
+sum=0
+while !eof(1)
+    input #1 x$
+    input #1 y$
+
+    switch x$
+        case "A":x=1:break
+        case "B":x=2:break
+        case "C":x=3:break
+    end switch
+
+    if (y$ = "X") then
+        sum=sum+1
+        switch x
+            // Rock vs. Rock = Draw
+            case 1:y=3:break
+            // Rock vs. Paper = Win
+            case 2:y=0:break
+            // Rock vs. Scissors = Win
+            case 3:y=6:break
+        end switch
+    elsif (y$ = "Y") then
+        sum=sum+2
+        switch x
+            // Paper vs. Rock = Win
+            case 1:y=6:break
+            // Paper vs. Paper = Draw
+            case 2:y=3:break
+            // Paper vs. Scissors = Loss
+            case 3:y=0:break
+        end switch
+    elsif (y$ = "Z") then
+        sum=sum+3
+        switch x
+            // Scissors vs. Rock = Loss
+            case 1:y=0:break
+            // Scissors vs. Paper = Win
+            case 2:y=6:break
+            // Scissors vs. Scissors = Draw
+            case 3:y=3:break
+        end switch
+    endif
+
+    sum=sum+y
+wend
+print(sum)
+close 1

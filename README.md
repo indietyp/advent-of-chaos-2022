@@ -15,7 +15,7 @@ To facilitate using the different languages we use nix environments via [devenv]
 | Day | Letter  | Language                                                              | Task 1             | Task 2             |
 |-----|---------|-----------------------------------------------------------------------|--------------------|--------------------|
 | 1   | A       | [ALGOL 68](https://en.wikipedia.org/wiki/ALGOL_68)                    | :heavy_check_mark: | :heavy_check_mark: |
-| 2   | B       | [BASIC](https://en.wikipedia.org/wiki/BASIC)                          | :x:                | :x:                |
+| 2   | B       | [BASIC](https://en.wikipedia.org/wiki/BASIC)                          | :heavy_check_mark: | :heavy_check_mark: |
 | 3   | C       | [COBOL](https://en.wikipedia.org/wiki/COBOL)                          | :x:                | :x:                |
 | 4   | D       | [D](https://en.wikipedia.org/wiki/D_(programming_language))           | :x:                | :x:                |
 | 5   | E       | [Erlang](https://en.wikipedia.org/wiki/Erlang_(programming_language)) | :x:                | :x:                |

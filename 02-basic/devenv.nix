@@ -5,7 +5,10 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [
+    pkgs.git
+    pkgs.yabasic
+  ];
 
   enterShell = ''
     hello
@@ -16,7 +19,8 @@
   languages.nix.enable = true;
 
   # https://devenv.sh/scripts/
-  scripts.hello.exec = "echo hello from $GREET";
+  scripts.task1.exec = "yabasic ./task1.basic";
+  scripts.task2.exec = "yabasic ./task2.basic";
 
   # https://devenv.sh/pre-commit-hooks/
   pre-commit.hooks.shellcheck.enable = true;
