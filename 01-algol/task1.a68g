@@ -1,0 +1,84 @@
+BEGIN
+    PRIO MAX = 9;
+    OP MAX = (INT a,b) INT: ( a>b | a | b );
+
+    CHAR zero = "0";
+    INT offset = ABS zero;
+
+    PROC strtoi = (REF []CHAR input) INT: (
+        INT elems = ELEMS input;
+
+        IF elems = 0
+        THEN
+            0
+        ELSE
+            INT value = (ABS input[1]) - offset;
+
+            IF elems = 1
+            THEN
+                value
+            ELSE
+                (value * (10 ** (elems - 1))) + strtoi(input[2:])
+            FI
+        FI
+    );
+
+    FILE in;
+    open (in, "input.txt", standback channel);
+
+    on logical file end
+    (in, (REF FILE f) BOOL:
+        (
+        close (f);
+        stop
+        )
+    );
+
+    # create types for a dynamic list of calories #
+    # MODE ELVES = FLEX [1:1] FLEX [1:1] INT; #
+    # fuck me, I am just going to statically allocate them #
+    MODE ELVES = [1024, 1024] INT;
+    ELVES elves;
+
+    FOR x TO 1024 DO
+        FOR y TO 1024 DO
+            # initialize the whole matrix #
+            elves[x, y] := 0
+        OD
+    OD;
+
+    INT row := 1;
+    INT col := 1;
+
+    STRING line;
+    DO get (in, (line, new line));
+        IF line = ""
+        THEN (
+            row +:= 1;
+            col := 1
+            )
+        ELSE (
+            elves[row, col] := strtoi (line);
+            col +:= 1
+            )
+        FI
+    OD;
+
+    stop: (
+        INT top := 0;
+
+        INT rows := ELEMS elves;
+        FOR x TO 1024 DO
+            INT sum := 0;
+            INT len := ELEMS elves[x,];
+
+            FOR y TO 1024 DO
+                sum +:= elves[x, y]
+            OD;
+
+            top := top MAX sum
+        OD;
+
+        print ((top, new line))
+    )
+END
