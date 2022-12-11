@@ -5,7 +5,7 @@ and harder, previously I have been doing these tasks in a single programming lan
 boring.
 
 Introducing: Advent Of Chaos, every day a new programming language, every single day is mapped to a letter, and a
-programming language with that name is selected. Sounds random? Because it is, but it enables on to look at old/unknown
+programming language with that name is selected. Sounds random? Because it is, but it enables one to look at old/unknown
 languages one would normally not use.
 
 To facilitate using the different languages we use nix environments via [devenv](https://github.com/cachix/devenv).
